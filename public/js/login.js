@@ -49,7 +49,7 @@ export const login = async (email, password) => {
       }, 1500)
     }
   } catch (e) {
-  
+
     showAlert("error", e.response.data.message)
   }
 
@@ -63,13 +63,17 @@ export const logout = async () => {
       url: 'http://localhost:3000/api/users/logout'
     })
     if (res.data.status === 'success') {
-      location.reload(true)
+      showAlert("success", "logged out successfully!");
+      window.setTimeout(() => {
+        location.assign('/')
+      }, 500)
     }
 
   } catch (e) {
     showAlert("error", e.response.data.message)
   }
 }
+
 
 
 export const forget = async (email) => {
@@ -111,7 +115,7 @@ export const reset = async (password, passwordConfirm, token) => {
       }, 1500)
     }
   } catch (e) {
-    
+
     showAlert("error", e.response.data.message)
   }
 
