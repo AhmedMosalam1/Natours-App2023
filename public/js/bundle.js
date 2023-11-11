@@ -12035,7 +12035,7 @@ var SignUp = exports.SignUp = /*#__PURE__*/function () {
           _context.next = 4;
           return (0, _axios.default)({
             method: 'POST',
-            url: 'http://localhost:3000/api/users/signup',
+            url: '/api/users/signup',
             data: {
               name: name,
               email: email,
@@ -12078,7 +12078,7 @@ var login = exports.login = /*#__PURE__*/function () {
           _context2.next = 4;
           return (0, _axios.default)({
             method: 'POST',
-            url: 'http://localhost:3000/api/users/login',
+            url: '/api/users/login',
             data: {
               email: email,
               password: password
@@ -12118,7 +12118,7 @@ var logout = exports.logout = /*#__PURE__*/function () {
           _context3.next = 3;
           return (0, _axios.default)({
             method: "GET",
-            url: 'http://localhost:3000/api/users/logout'
+            url: '/api/users/logout'
           });
         case 3:
           res = _context3.sent;
@@ -12154,7 +12154,7 @@ var forget = exports.forget = /*#__PURE__*/function () {
           _context4.next = 3;
           return (0, _axios.default)({
             method: 'POST',
-            url: 'http://localhost:3000/api/users/forgetPassword',
+            url: '/api/users/forgetPassword',
             data: {
               email: email
             }
@@ -12194,7 +12194,7 @@ var reset = exports.reset = /*#__PURE__*/function () {
           _context5.next = 3;
           return (0, _axios.default)({
             method: 'PATCH',
-            url: "http://localhost:3000/api/users/resetPassword/".concat(token),
+            url: "/api/users/resetPassword/".concat(token),
             data: {
               password: password,
               passwordConfirm: passwordConfirm
@@ -12245,7 +12245,7 @@ var updateSettings = exports.updateSettings = /*#__PURE__*/function () {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          url = type === "password" ? "http://localhost:3000/api/users/updatepassword" : "http://localhost:3000/api/users/updateme";
+          url = type === "password" ? "/api/users/updatepassword" : "/api/users/updateme";
           _context.next = 4;
           return (0, _axios.default)({
             method: "PATCH",
@@ -12297,7 +12297,7 @@ var bookTour = exports.bookTour = /*#__PURE__*/function () {
           _context.prev = 0;
           stripe = Stripe('pk_test_51NopXFLGYQE1Xj53peJplXUPtrFVpzuVr7GUSLRxcK4ckjq00wODuscvrl78afof8Gk3jWALTeUYFaflvHSwiuow00PZ5lpHcA'); // Get checkout session from API
           _context.next = 4;
-          return (0, _axios.default)("http://localhost:3000/api/booking/checkout-session/".concat(tourId));
+          return (0, _axios.default)("/api/booking/checkout-session/".concat(tourId));
         case 4:
           session = _context.sent;
           _context.next = 7;
@@ -12630,7 +12630,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "8656" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "13160" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
