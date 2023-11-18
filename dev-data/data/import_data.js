@@ -30,8 +30,8 @@ const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, "utf-8"))
 const importdata = async () => {
     try {
         await tour.create(tours)
-        await review.create(reviews)
-        await user.create(users, { validateBeforeSave: false })
+       // await review.create(reviews)
+        //await user.create(users, { validateBeforeSave: false })
         console.log("Data Created successfully")
     } catch (err) {
         console.log(err)
@@ -44,8 +44,8 @@ const importdata = async () => {
 const deletedata = async () => {
     try {
         await tour.deleteMany()
-        await review.deleteMany()
-        await user.deleteMany()
+       // await review.deleteMany()
+        //await user.deleteMany()
         console.log("Data Deleted successfully")
     } catch (err) {
         console.log(err)
