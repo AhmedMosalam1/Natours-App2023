@@ -9,8 +9,9 @@ const compression = require("compression")
 const cors = require("cors")
 const xss = require("xss-clean")
 const mongoSanitize = require("express-mongo-sanitize")
-const app = express();
 
+const app = express();
+app.enable("trust proxy")
 
 
 // Routers
