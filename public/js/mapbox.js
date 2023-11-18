@@ -11,6 +11,7 @@ export const displayMap = locations => {
   });
 
 const bounds = new mapboxgl.LngLatBounds();
+const coords = [];
 
   locations.forEach(loc => {
     // Create marker
@@ -35,6 +36,7 @@ const bounds = new mapboxgl.LngLatBounds();
 
     // Extend map bounds to include current location
     bounds.extend(loc.coordinates);
+    coords.push(loc.coordinates);
   });
 
   map.fitBounds(bounds, {
@@ -45,6 +47,34 @@ const bounds = new mapboxgl.LngLatBounds();
       right: 100
     }
   });
+
+  map.on('load', () => {
+    map.addSource('route', {
+      type: 'geojson',
+      data: {
+        type: 'Feature',
+        properties: {},
+        geometry: {
+          type: 'LineString',
+          coordinates: coords, // Use the route coordinates array
+        },
+      },
+    });
+    map.addLayer({
+      id: 'route',
+      type: 'line',
+      source: 'route',
+      layout: {
+        'line-join': 'round',
+        'line-cap': 'round',
+      },
+      paint: {
+        'line-color': '#28b487',
+        'line-width': 3,
+      },
+    });
+  });
+
 
 }
 

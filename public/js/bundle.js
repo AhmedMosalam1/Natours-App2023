@@ -6657,6 +6657,7 @@ var displayMap = exports.displayMap = function displayMap(locations) {
   });
 
   var bounds = new mapboxgl.LngLatBounds();
+  var coords = [];
   locations.forEach(function (loc) {
     // Create marker
     var el = document.createElement('div');
@@ -6675,6 +6676,7 @@ var displayMap = exports.displayMap = function displayMap(locations) {
 
     // Extend map bounds to include current location
     bounds.extend(loc.coordinates);
+    coords.push(loc.coordinates);
   });
   map.fitBounds(bounds, {
     padding: {
@@ -6683,6 +6685,33 @@ var displayMap = exports.displayMap = function displayMap(locations) {
       left: 100,
       right: 100
     }
+  });
+  map.on('load', function () {
+    map.addSource('route', {
+      type: 'geojson',
+      data: {
+        type: 'Feature',
+        properties: {},
+        geometry: {
+          type: 'LineString',
+          coordinates: coords // Use the route coordinates array
+        }
+      }
+    });
+
+    map.addLayer({
+      id: 'route',
+      type: 'line',
+      source: 'route',
+      layout: {
+        'line-join': 'round',
+        'line-cap': 'round'
+      },
+      paint: {
+        'line-color': '#28b487',
+        'line-width': 3
+      }
+    });
   });
 };
 },{}],"../../node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
@@ -12305,19 +12334,18 @@ var bookTour = exports.bookTour = /*#__PURE__*/function () {
             sessionId: session.data.session.id
           });
         case 7:
-          console.log(session);
-          _context.next = 14;
+          _context.next = 13;
           break;
-        case 10:
-          _context.prev = 10;
+        case 9:
+          _context.prev = 9;
           _context.t0 = _context["catch"](0);
           console.log(_context.t0);
           (0, _alerts.showAlert)('error', _context.t0);
-        case 14:
+        case 13:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[0, 10]]);
+    }, _callee, null, [[0, 9]]);
   }));
   return function bookTour(_x) {
     return _ref.apply(this, arguments);
@@ -12630,7 +12658,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "13160" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "12904" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

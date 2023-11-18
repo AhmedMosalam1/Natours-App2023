@@ -48,7 +48,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
       }
     ]
   });
-  console.log(tour)
+  //console.log(tour)
   // 3) Create Session as response
   res.status(200).json({
     status: 'success',

@@ -43,9 +43,9 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ['*']
-        // ,
-        // 'img-src': ["'self'", 's3.amazonaws.com', 'res.cloudinary.com'],
-        // scriptSrc: ["* data: 'unsafe-eval' 'unsafe-inline' blob:"],
+        ,
+        'img-src': ["'self'", 's3.amazonaws.com', 'res.cloudinary.com'],
+        scriptSrc: ["* data: 'unsafe-eval' 'unsafe-inline' blob:"],
       },
     },
   }),
