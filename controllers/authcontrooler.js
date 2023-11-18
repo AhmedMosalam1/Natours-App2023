@@ -45,9 +45,14 @@ const signup = catchAsync(async (req, res) => {
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm
   })
+  console.log(result)
   const url = `${req.protocol}://${req.get('host')}/me`
   //  console.log(url)
   await new Email(result, url).sendWelcome()
+  .then()
+  .catch(err =>{
+    console.log(err)
+  })
   createSendToken(res, result, 200)
 })
 
