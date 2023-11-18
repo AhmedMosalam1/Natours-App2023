@@ -54,11 +54,11 @@ module.exports = class Email {
 
 
     const mailOptions = {
-      from: `Ahmed Mosalam <${process.env.GMAIL_USERNAME}>`,
+      from: this.from,
       to: this.to,
       subject,
       html,
-      text: htmlToText.convert(html),
+      //text: htmlToText.convert(html),
     };
 
     await this.newTransport().sendMail(mailOptions);
