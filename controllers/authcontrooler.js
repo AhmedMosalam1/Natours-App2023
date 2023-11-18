@@ -14,11 +14,10 @@ const createSendToken = (res, result, statusCode) => {
 
   const cookieOptions = {
     expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRE_IN * 24 * 60 * 60 * 1000),
-    httpOnly: true,
-    secure: true
+    httpOnly: true, 
   }
 
- // if (process.env.NODE_ENV == "production") cookieOptions.secure = true;
+  if (process.env.NODE_ENV == "production") cookieOptions.secure = true;
 
   res.cookie('jwt', token, cookieOptions)
 
@@ -45,7 +44,7 @@ const signup = catchAsync(async (req, res) => {
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm
   })
-  console.log(result)
+ // console.log(result)
   const url = `${req.protocol}://${req.get('host')}/me`
   //  console.log(url)
   await new Email(result, url).sendWelcome()
