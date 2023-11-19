@@ -32,7 +32,7 @@ export const SignUp = async (name, email, password, passwordConfirm) => {
 }
 
 export const login = async (email, password) => {
-  console.log(email, password);
+  //console.log(email, password);
   try {
     const res = await axios({
       method: 'POST',
@@ -111,7 +111,7 @@ export const reset = async (password, passwordConfirm, token) => {
     if (res.data.status === 'success') {
       showAlert("success", "Password Changed Successfully!");
       window.setTimeout(() => {
-        location.assign('/login')
+        location.assign('/')
       }, 1500)
     }
   } catch (e) {

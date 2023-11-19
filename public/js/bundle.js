@@ -12102,9 +12102,8 @@ var login = exports.login = /*#__PURE__*/function () {
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
-          console.log(email, password);
-          _context2.prev = 1;
-          _context2.next = 4;
+          _context2.prev = 0;
+          _context2.next = 3;
           return (0, _axios.default)({
             method: 'POST',
             url: '/api/users/login',
@@ -12113,7 +12112,7 @@ var login = exports.login = /*#__PURE__*/function () {
               password: password
             }
           });
-        case 4:
+        case 3:
           res = _context2.sent;
           if (res.data.status === 'success') {
             (0, _alerts.showAlert)("success", "logged in successfully!");
@@ -12121,17 +12120,17 @@ var login = exports.login = /*#__PURE__*/function () {
               location.assign('/');
             }, 1500);
           }
-          _context2.next = 11;
+          _context2.next = 10;
           break;
-        case 8:
-          _context2.prev = 8;
-          _context2.t0 = _context2["catch"](1);
+        case 7:
+          _context2.prev = 7;
+          _context2.t0 = _context2["catch"](0);
           (0, _alerts.showAlert)("error", _context2.t0.response.data.message);
-        case 11:
+        case 10:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[1, 8]]);
+    }, _callee2, null, [[0, 7]]);
   }));
   return function login(_x5, _x6) {
     return _ref2.apply(this, arguments);
@@ -12234,7 +12233,7 @@ var reset = exports.reset = /*#__PURE__*/function () {
           if (res.data.status === 'success') {
             (0, _alerts.showAlert)("success", "Password Changed Successfully!");
             window.setTimeout(function () {
-              location.assign('/login');
+              location.assign('/');
             }, 1500);
           }
           _context5.next = 10;

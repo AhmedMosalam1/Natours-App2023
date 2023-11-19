@@ -84,8 +84,6 @@ const updateme = catchAsync(async (req, res, next) => {
         public_id: `${req.user.id}_Cover`,
         crop: 'fill',
       });
-
-      console.log(result1)
       
     const filterBody = filterObj(req.body, 'name', 'email')
 

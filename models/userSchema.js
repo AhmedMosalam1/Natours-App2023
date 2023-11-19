@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     },
     photo: {
         type: String,
-        default: "default.jpg",
+        default: "https://res.cloudinary.com/dhddxcwcr/image/upload/v1700416252/6558f05c2841e64561ce75d1_Cover.jpg",
     },
     password: {
         type: String,
@@ -94,7 +94,7 @@ userSchema.methods.createtPasswordResetToken = function () {
     this.passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex')
     this.passwordResetExpired = Date.now() + 10 * 60 * 1000
 
-  //  console.log({ resetToken }, this.passwordResetToken)
+    //  console.log({ resetToken }, this.passwordResetToken)
 
     return resetToken
 }
