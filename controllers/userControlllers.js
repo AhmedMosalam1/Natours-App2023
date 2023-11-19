@@ -85,6 +85,7 @@ const updateme = catchAsync(async (req, res, next) => {
         crop: 'fill',
       });
 
+      console.log(result1)
       
     const filterBody = filterObj(req.body, 'name', 'email')
 

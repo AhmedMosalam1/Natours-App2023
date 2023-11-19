@@ -18,15 +18,21 @@ module.exports = class Email {
 
   newTransport() {
     if (process.env.NODE_ENV === 'development') {
-
       return nodemailer.createTransport({
-        host: 'smtp-relay.brevo.com',
-        port:587,
+        service: 'gmail',
         auth: {
-          user: "ahlyahly431@gmail.com",
-          pass: "xsmtpsib-bed6abde865415f288a19808fe393b585522aaf50ba8dd21998b38a7b8dfcdf0-ykJaXCdHEpBZ1rqc",
+          user: process.env.GMAIL_USERNAME,
+          pass: process.env.GMAIL_PASSWORD,
         },
       });
+    //   return nodemailer.createTransport({
+    //     host: 'smtp-relay.brevo.com',
+    //     port:587,
+    //     auth: {
+    //       user: "ahlyahly431@gmail.com",
+    //       pass: "xsmtpsib-bed6abde865415f288a19808fe393b585522aaf50ba8dd21998b38a7b8dfcdf0-ykJaXCdHEpBZ1rqc",
+    //     },
+    //   });
     }
 
     return nodemailer.createTransport({
