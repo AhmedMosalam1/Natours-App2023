@@ -228,8 +228,9 @@ const updatePassword = catchAsync(async (req, res, next) => {
     return next(new appError("Your current password is incorrect", 401))
   }
 
+  //console.log(req.body)
   result.password = req.body.password
-  result.passwordConfirm = req.body.passwordConfirm
+  result.passwordConfirm = req.body.passwordConfrim
 
   await result.save()
 

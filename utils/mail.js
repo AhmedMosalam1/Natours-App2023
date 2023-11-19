@@ -17,13 +17,14 @@ module.exports = class Email {
   }
 
   newTransport() {
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === 'development') {
 
       return nodemailer.createTransport({
-        service: 'gmail',
+        host: 'smtp-relay.brevo.com',
+        port:587,
         auth: {
-          user: process.env.GMAIL_USERNAME,
-          pass: process.env.GMAIL_PASSWORD,
+          user: "ahlyahly431@gmail.com",
+          pass: "xsmtpsib-bed6abde865415f288a19808fe393b585522aaf50ba8dd21998b38a7b8dfcdf0-ykJaXCdHEpBZ1rqc",
         },
       });
     }
@@ -65,7 +66,7 @@ module.exports = class Email {
   }
 
   async sendWelcome() {
-    await this.send("Welcome", "Welcome to the Natours Family...")
+    await this.send("welcome", "Welcome to the Natours Family...")
   }
 
   async sendPasswordReset() {

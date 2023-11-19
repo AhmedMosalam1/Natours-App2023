@@ -12595,7 +12595,7 @@ if (userPasswordForm) {
             document.querySelector(".btn--save-password").textContent = "Save Password";
             document.getElementById('password-current').value = " ";
             document.getElementById('password').value = " ";
-            document.getElementById('password-confirm').value = "";
+            document.getElementById('password-confirm').value = " ";
           case 11:
           case "end":
             return _context.stop();
@@ -12658,7 +12658,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "12904" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "14251" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

@@ -4,14 +4,15 @@ const appError = require("../utils/appError");
 const factory = require("./handelrFactory");
 const multer = require("multer");
 const sharp = require("sharp")
+const cloudinary = require("../utils/cloud")
 
 const filterObj = (obj, ...allowFields) => {
     const newFields = {}
-    console.log(Object.keys(obj))
+    //console.log(Object.keys(obj))
     Object.keys(obj).forEach(el => {
         if (allowFields.includes(el)) newFields[el] = obj[el]
     })
-    console.log(newFields)
+    //console.log(newFields)
     return newFields;
 }
 
@@ -79,9 +80,15 @@ const updateme = catchAsync(async (req, res, next) => {
         return next(new appError("this route is not for password update . please use /updatepassword"))
     }
 
+    const result1 = await cloudinary.uploader.upload(`public/img/users/${req.file.filename}`, {
+        public_id: `${req.user.id}_Cover`,
+        crop: 'fill',
+      });
+
+      
     const filterBody = filterObj(req.body, 'name', 'email')
 
-    if (req.file) filterBody.photo = req.file.filename
+    if (req.file) filterBody.photo = result1.secure_url
 
     const result = await user.findByIdAndUpdate(req.user.id, filterBody, {
         new: true,

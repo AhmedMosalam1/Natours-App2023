@@ -11,7 +11,7 @@ const xss = require("xss-clean")
 const mongoSanitize = require("express-mongo-sanitize")
 
 const app = express();
-app.enable("trust proxy")
+//app.enable("trust proxy")
 
 
 // Routers
